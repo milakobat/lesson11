@@ -14,9 +14,21 @@ var cube =function(parameter){
 	//return square(number) * number;
 
 };
+function main(){
 
-var q1 = square(9); //square 9 by calling our function
-console.log("q1 = " + q1);
+	var q1 = square(9); //square 9 by calling our function
+	console.log("q1 = " + q1);
 
-var q2 = cube(9);
-console.log("q2 = " + q2);
+	var q2 = cube(9);
+	console.log("q2 = " + q2);
+
+}
+
+function afterSomeTime(){
+	setTimeout(main, 5000);
+}
+
+//setTimeout(main,1000); //1sec later
+document.body.onclick = afterSomeTime;
+
+
