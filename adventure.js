@@ -23,13 +23,23 @@ function roomOfHorses(){
 	});
 
 	var removeHorse = function(event) {
-		console.log("removeHorse"); 
-
+		$(event.target).remove();
+		//if all horses are removed, win
+		console.log($(".horse").length);
+		if($(".horse").length === 0) {
+			win();
+		}
 	};
 	//when a horse is clicked remove from screen
+	//.horse= span class
 	$(".horse").on("click",removeHorse);
+	var checkIfAnyHorsesRemain = function() {
+		var horsesLeftOver = $(".horse").length;
+		if(horsesLeftOver > 0) lose();
+	}
 	//if 15 seconds elapses ans some horses remain, lose
-	//if all horses are removed, win
+	setTimeout(checkIfAnyHorsesRemain,15000);//15 sec
+	
 
 	alert("lots of horses nibble you!");
 	return false;
