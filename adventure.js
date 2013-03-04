@@ -1,18 +1,44 @@
+$ = jQuery;
+
 function room1(){
-	var answer = prompt("Which is a colour? Red, Obama, Hat");
-	return answer.toLowerCase() === "red";
+	var answer = prompt("Would you prefer to fight 1 horse sized duck or 100 duck sized horses?");
+	answer= answer.toLowerCase();
+
+	if (answer === "duck") {
+		theDucksLair();
+	}else if(answer == "horses") {
+		roomOfHorses();
+	}else{
+		alert("You can't get out of it! Choose!");
+		room1();
+	}
 
 }
 
-function room2(){
-	var answer = prompt("Draw a happy face");
-	return answer===":)" || answer==="(:" || answer===":D" || answer==="^__^";
+function roomOfHorses(){
+
+	//display 100 horses
+	[1,2,3,4,5,6,7,8,9,10].forEach(function(){
+		$("body").append("<span class='horse'>Horse</span>");
+	});
+
+	var removeHorse = function(event) {
+		console.log("removeHorse"); 
+
+	};
+	//when a horse is clicked remove from screen
+	$(".horse").on("click",removeHorse);
+	//if 15 seconds elapses ans some horses remain, lose
+	//if all horses are removed, win
+
+	alert("lots of horses nibble you!");
+	return false;
 
 }
 
-function room3(){
-	var answer = prompt("Say hello in spanish")
-	return answer.toLowerCase() === "hola";
+function theDucksLair(){
+	alert("a terrifyingly huge duck appproaches!");
+	return false;
 
 }
 
@@ -26,19 +52,9 @@ function win(){
 
 }
 
-function play(){
-	if(room1()===false) { 
-		return lose("in room 1");
-	}
-	if(room2()===false) {
-		return lose("in the room of doom");
-	}
+function play(firstRoom){
+	firstRoom();
+	};
 
-	if(room3()===false) { 
-		return lose("in the final BOSS ROOM!");
-	}
-	win();
 
-};
-
-play();
+play(roomOfHorses);
