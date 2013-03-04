@@ -18,9 +18,15 @@ function room1(){
 function roomOfHorses(){
 
 	//display 100 horses
-	[1,2,3,4,5,6,7,8,9,10].forEach(function(){
+
+
+	var horsesToDisplay = 100;
+	while(horsesToDisplay > $(".horse").length){ //esto a veces causa loops que atascan la página
+
 		$("body").append("<span class='horse'>Horse</span>");
-	});
+	};
+
+
 
 	var removeHorse = function(event) {
 		$(event.target).remove();
@@ -35,14 +41,33 @@ function roomOfHorses(){
 	$(".horse").on("click",removeHorse);
 	var checkIfAnyHorsesRemain = function() {
 		var horsesLeftOver = $(".horse").length;
-		if(horsesLeftOver > 0) lose();
+		if(horsesLeftOver > 0) {
+			lose();
+		}else{
+			win();
+		}
 	}
+
 	//if 15 seconds elapses ans some horses remain, lose
 	setTimeout(checkIfAnyHorsesRemain,15000);//15 sec
-	
 
-	alert("lots of horses nibble you!");
-	return false;
+	//$clock --> $ significa jquery object
+	var $clock = $("<span class='clock'>0.00</span>");
+	$("body").prepend($clock);
+
+	var seconds = 0;
+	var tick = function() {
+		seconds += 1;
+		$clock.text(seconds.toFixed(2));
+		if(seconds>=15){
+			clearInterval(ticker);
+		}
+	};
+
+	//start off the tick, and store the interval so we can stop it
+	var ticker = setInterval(tick, 1000);
+	//give us our first tick immediately
+	tick();
 
 }
 
