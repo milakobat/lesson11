@@ -1,0 +1,106 @@
+@font-face{
+	font-family: League;
+	src: url(http://www.micomoler.com/style/ostrich-light.ttf);
+}
+
+body{
+	width: 800px;
+	margin: 30px auto;
+	font-weight: bolder;
+	text-align: center;
+	background: url(images/background.png);
+}
+
+h1{
+	font-family: League;
+	font-size: 60px;
+	color: black;
+}
+
+.clock{
+	width: 50px;
+	height: 35px;
+	margin: 0 auto;
+	background-color: #ecb3e5;
+	border-radius: 25px;
+	border: 2px solid white;
+	box-shadow: 0px 0px 20px 0px #64f1db;
+	padding-top: 15px;
+	clear: both;
+	color: white;
+}
+
+.horse{
+	width: 150px;
+	height: 146px;
+	text-indent: -1000em;
+	background: url(images/horse.png);
+	color: red;
+	display: inline-block;
+	position: relative;
+
+
+	-webkit-animation-name: horse;
+   	-webkit-animation-duration: 2s;
+  	-webkit-animation-iteration-count: infinite;
+  	-webkit-animation-direction: alternate;
+}
+
+.horse:hover {
+   -webkit-animation-play-state: paused;
+}
+
+
+	@-webkit-keyframes horse {
+  from {
+    top: -400px;
+  }
+ 
+  to {
+    top: 0px;
+   
+  }
+}
+
+.duck{
+	width: 734px;
+	height: 800px;
+	text-indent: -1000em;
+	background: url(images/duck.png);
+	color: red;
+	display: inline-block;
+	position: relative;
+
+	-webkit-animation-name: duck;
+   	-webkit-animation-duration: 2s;
+  	-webkit-animation-iteration-count: infinite;
+  	-webkit-animation-direction: alternate;
+}
+
+
+@-webkit-keyframes duck {
+  0% {
+    -webkit-transform: rotateZ(10deg);
+    left: -100px;
+  }
+ 
+  50% {
+    -webkit-transform: rotateZ(-10deg);
+   
+  }
+
+  75% {
+  	-webkit-transform: rotateZ(-20deg);
+  	
+  }
+  80% {
+  	-webkit-transform: rotateZ(10deg);
+  	
+  }
+
+  100%{
+  	-webkit-transform: rotateZ(25deg);
+
+     	
+  }
+
